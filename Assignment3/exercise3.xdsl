@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="climate">
+			<state id="Hot" />
+			<state id="Cold" />
+			<probabilities>0.9 0.1</probabilities>
+			<property id="Abobe">0.5</property>
+			<property id="dsasd">0.5</property>
+		</cpt>
+		<cpt id="activity">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="economy">
+			<state id="Good" />
+			<state id="Poor" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="Desire_of_meeting_celebrities">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="delayed_luggage">
+			<state id="Not_delayed" />
+			<state id="Delayed" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="robbed">
+			<state id="Not_robbed" />
+			<state id="Robbed" />
+			<probabilities>0.9 0.1</probabilities>
+		</cpt>
+		<decision id="beach_or_ski">
+			<state id="Beach" />
+			<state id="Skiing" />
+		</decision>
+		<cpt id="Weather_probability">
+			<state id="Good" />
+			<state id="Bad" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Time_of_year">
+			<state id="Winter" />
+			<state id="Summer" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Practical">
+			<state id="Beach" />
+			<state id="Skiing" />
+			<parents>Weather_probability economy climate Time_of_year</parents>
+			<probabilities>0.4 0.6 0.8 0.2 0.1 0.9 0.55 0.45 0.55 0.45 1 0 0.25 0.75 0.6 0.4 0.3 0.7 0.65 0.35 0 1 0.35 0.65 0.45 0.55 0.85 0.15 0.15 0.85 0.45 0.55</probabilities>
+		</cpt>
+		<cpt id="Chances_of_meeting_someone_attractive">
+			<state id="Met_someone" />
+			<state id="Met_noone" />
+			<probabilities>0.75 0.25</probabilities>
+		</cpt>
+		<cpt id="Chances_of_accidents">
+			<state id="Accident" />
+			<state id="No_accident" />
+			<probabilities>0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Shit_happens">
+			<state id="Beach" />
+			<state id="Skiing" />
+			<parents>Chances_of_meeting_someone_attractive Chances_of_accidents robbed delayed_luggage</parents>
+			<probabilities>0.4 0.6 0.5 0.5 0.3 0.7 0.35 0.65 0.9 0.1 1 0 0.7 0.3 0.8 0.2 0.3 0.7 0.4 0.6 0.25 0.75 0.25 0.75 0.8 0.2 0.85 0.15 0.6 0.4 0.75 0.25</probabilities>
+		</cpt>
+		<cpt id="Desired_level_of_social_interaction">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Social">
+			<state id="Beach" />
+			<state id="Skiing" />
+			<parents>Desired_level_of_social_interaction Desire_of_meeting_celebrities activity</parents>
+			<probabilities>0.8 0.2 0.9 0.1 0.9 0.1 1 0 0 1 0.4 0.6 0.2 0.8 0.6 0.4</probabilities>
+		</cpt>
+		<utility id="Master_utility">
+			<parents>Practical Shit_happens Social beach_or_ski</parents>
+			<utilities>0.9 0.1 0.7 0.3 0.75 0.25 0.45 0.55 0.65 0.35 0.3 0.7 0.25 0.75 0.05 0.95</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Network1" faultnameformat="nodestate">
+			<node id="climate">
+				<name>Desired climate</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>107 178 230 284</position>
+				<barchart active="true" width="174" height="75" />
+			</node>
+			<node id="activity">
+				<name>Desired level of activity</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>122 760 214 817</position>
+				<barchart active="true" width="174" height="64" />
+			</node>
+			<node id="economy">
+				<name>Economy</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>143 145 191 175</position>
+				<barchart active="true" width="173" height="68" />
+			</node>
+			<node id="delayed_luggage">
+				<name>Chances of delayed luggage</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>142 362 190 392</position>
+				<barchart active="true" width="168" height="66" />
+			</node>
+			<node id="robbed">
+				<name>Chances of getting robbed</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>142 428 190 458</position>
+				<barchart active="true" width="169" height="67" />
+			</node>
+			<node id="beach_or_ski">
+				<name>Beach or skiing</name>
+				<interior color="339966" />
+				<outline color="999999" />
+				<font color="000000" name="Arial" size="8" />
+				<position>102 12 207 40</position>
+			</node>
+			<node id="Practical">
+				<name>Practical</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>522 65 630 132</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Desired_level_of_social_interaction">
+				<name>Desired level of social interaction</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>118 626 220 689</position>
+				<barchart active="true" width="174" height="66" />
+			</node>
+			<node id="Time_of_year">
+				<name>Time of year</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>131 280 204 325</position>
+				<barchart active="true" width="171" height="67" />
+			</node>
+			<node id="Social">
+				<name>Social</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>458 659 561 723</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Desire_of_meeting_celebrities">
+				<name>Desire of meeting celebrities</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>120 694 213 752</position>
+				<barchart active="true" width="169" height="66" />
+			</node>
+			<node id="Weather_probability">
+				<name>Weather probability</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>116 61 219 125</position>
+				<barchart active="true" width="173" height="64" />
+			</node>
+			<node id="Chances_of_accidents">
+				<name>Chances of accidents</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>125 483 207 534</position>
+				<barchart active="true" width="169" height="65" />
+			</node>
+			<node id="Chances_of_meeting_someone_attractive">
+				<name>Chances of meeting someone attractive</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>107 539 225 612</position>
+				<barchart active="true" width="169" height="69" />
+			</node>
+			<node id="Shit_happens">
+				<name>Shit happens</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>517 340 592 386</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Master_utility">
+				<name>Master utility function</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>869 396 912 428</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
